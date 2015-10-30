@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="p1">
+  <ClassDiagramComponents>
+    <Class name="Command1" package="p1" visibility="public" xPosition="20.0" yPosition="222.0">
+      <Fields>
+        <Field name="id" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="int" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Command2" package="p1" visibility="public" xPosition="307.0" yPosition="222.0">
+      <Fields>
+        <Field name="id" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="int" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="p1" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="Command" package="p1" visibility="public" xPosition="47.0" yPosition="15.0">
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="p1.Command1" target="p1.Command"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="p1.Command2" target="p1.Command"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
