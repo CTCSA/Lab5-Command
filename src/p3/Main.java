@@ -24,51 +24,29 @@ public class Main {
                         System.out.println("-- End --");
                         System.exit(0);
                     case 1:
-                        Action action = history.pop();
-                        switch (action.getOption()) {
-                            case 3:
-                                shapes.add(action.getIndex(), action.getShape());
-                                break;
-                            case 4:
-                            case 5:
-                                shapes.remove(action.getShape());
-                                break;
-                        }
+                        UndoCommand udcmd = new UndoCommand(shapes, history);
+                        udcmd.execute();
                         break;
                     case 2:
-                        DrawCommand cmd;
-                        cmd = new DrawCommand(shapes);
+                       /* 
+                        for (int i = 0; i < shapes.size(); i++) {
+                            ((Shape) shapes.elementAt(i)).draw();
+                        }
+                       */
+                        DrawCommand cmd = new DrawCommand(shapes);
                         cmd.execute();
                         break;
                     case 3:
-                        System.out.print("Enter index of the shape: ");
-                        line = br.readLine();
-                        int index = Integer.parseInt(line);
-                        if (index < 0 || index >= shapes.size()) {
-                            throw new Exception("Out of Range");
-                        }
-                        shape = shapes.get(index);
-                        shapes.remove(shape);
-                        history.push(new Action(3, shape, index));
+                        DelCommand dcmd = new DelCommand(shapes, history);
+                        dcmd.execute();
                         break;
                     case 4:
-                        System.out.print("Enter radius: ");
-                        line = br.readLine();
-                        int radius = Integer.parseInt(line);
-                        shape = new Circle(radius);
-                        shapes.add(shape);
-                        history.push(new Action(4, shape, -1));
+                        CircleCommand ccmd = new CircleCommand(shapes, history);
+                        ccmd.execute();
                         break;
                     case 5:
-                        System.out.print("Enter width: ");
-                        line = br.readLine();
-                        int width = Integer.parseInt(line);
-                        System.out.print("Enter height: ");
-                        line = br.readLine();
-                        int height = Integer.parseInt(line);
-                        shape = new Rectangle(width, height);
-                        shapes.add(shape);
-                        history.push(new Action(5, shape, -1));
+                        RectangleCommand rcmd = new RectangleCommand(shapes, history);
+                        rcmd.execute();
                         break;
                     default:
                         throw new Exception("Invalid Option");
